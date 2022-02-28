@@ -27,4 +27,4 @@
 
 # calculate total sales and profits
 
-# output data to nexts file 
+# output data to nexts file
