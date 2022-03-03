@@ -13,6 +13,6 @@ def not_blank (question, error_messasge) :
               print(error_messasge)
 
 
-#Main Routine goes here 
+# ***** ain Routine goes here ****
 name = not_blank("Name: ",
                  "Sorry _ this can't be blank, please enter your name")                 
