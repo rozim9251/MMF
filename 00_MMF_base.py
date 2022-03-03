@@ -14,6 +14,25 @@ def not_blank (question, error_messasge) :
         else:
               print(error_messasge)
 
+# checks for interger more than 0
+def int_check(question):
+
+    error = "please enter a whole number that is more than 0"
+
+    valid = False
+    while not valid:
+        try:
+            response = int(input(question))
+            print(response)
+            if response <= 0: 
+                print (error)  
+
+            else:
+                return response    
+
+        except ValueError:
+            print("NOT a number")
+
 
 #**********Main Routine**********
 
@@ -28,17 +47,37 @@ MAX_TICKETS = 5
 # Loop to get ticket details
 name = ""
 while name != "xxx" and count < MAX_TICKETS:
-    print ("You have {} seats left". format (MAX_TICKETS - count)) 
+  print ("You have {} seats left". format (MAX_TICKETS - count)) 
 
 
-    # Get details...
-    # Get name (can't be blank)
-    name = not_blank ("Name: ", "Sorry, this can't be blank")
-    count += 1
-    print()
+  # Get details...
+  # Get name (can't be blank)
+  name = not_blank ("Name: ", "Sorry, this can't be blank")
+
+  if name == "xxx":
+    break
+
+  print()
+
+  # Get age (between 12 and 130
+  age = int_check("How old? ")
+  #check the age is valid...
+  if age < 12:
+    print("sorry you are too young for this movie")
+    continue
+
+  elif age > 130:
+    print("that is very old _ it looks like a mstake")
+    continue
+
+  # if age is OK, increase ticket count
+  count += 1
+
+print("you have {} tickets left".format(MAX_TICKETS - count))
+
  
   
-  # Get age (between 12 and 130
+
 
   # calculate ticket price
 
