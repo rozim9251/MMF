@@ -9,7 +9,7 @@ def int_check(question):
     valid = False
     while not valid:
         try:
-            response = int(input("Number: "))
+            response = int(input(question))
             print(response)
             if response <= 0: 
                 print (error)  
@@ -18,7 +18,7 @@ def int_check(question):
                 return response    
 
         except ValueError:
-            print("NOT a number")
+            print(error)
 
       
 

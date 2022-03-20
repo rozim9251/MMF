@@ -31,7 +31,7 @@ def int_check(question):
                 return response    
 
         except ValueError:
-            print("NOT a number")
+            print(error)
 
 
 #**********Main Routine**********
@@ -40,6 +40,7 @@ def int_check(question):
 
 # initialise variables
 count = 0
+profit = 0
 MAX_TICKETS = 5
 
 # Ask if they have used the program before & show instructions if necessary
@@ -70,16 +71,25 @@ while name != "xxx" and count < MAX_TICKETS:
     print("that is very old _ it looks like a mstake")
     continue
 
+
+  # calculate ticket price based on age
+  if age < 16:
+    ticket_price = 7.5
+  elif age < 65:
+    ticket_price = 10.5
+  else:
+    ticket_price = 6.5    
+
+
   # if age is OK, increase ticket count
   count += 1
 
-print("you have {} tickets left".format(MAX_TICKETS - count))
+  profit_made = ticket_price - 5
+  profit += profit_made
 
- 
-  
+  print("{}  : ${:.2f}".format(name, ticket_price))  
 
-
-  # calculate ticket price
+  print("Profit from Tickets: ${:.2f}".format(profit))
 
   # loop to ask for snacks
 
@@ -88,6 +98,12 @@ print("you have {} tickets left".format(MAX_TICKETS - count))
   # ask for payment method (and apply surcharge if necessary)
 
 
+  # ***** Loop for getting information ends here.  ****
+
 # calculate total sales and profits
 
-# output data to nexts file
+# output data to text file
+
+
+# Ending stuff.  Might not need it after all??
+print("you have {} tickets left".format(MAX_TICKETS - count))
