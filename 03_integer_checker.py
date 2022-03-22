@@ -4,7 +4,7 @@
 # checks for interger more than 0
 def int_check(question):
 
-    error = "please ente a whole number that is more than 0"
+    error = "please enter a whole number that is more than 0"
 
     valid = False
     while not valid:
