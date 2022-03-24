@@ -15,7 +15,7 @@ snack_ok = ""
 snack = ""
 
 # loop three times to make testing quicker
-for item in range(0, 3):
+for item in range(0, 10):
 
     # ask user for desired snack and put it in lowercase
     desired_snack = input("snack: ") .lower()
@@ -27,7 +27,7 @@ for item in range(0, 3):
 
             # get full name of snack and put it in 
             # in title case so it looks nice when outputted
-            snack = var_list[0]. title ()
+            snack = var_list[0].title()
             snack_ok = "yes"
             break
 
@@ -35,8 +35,8 @@ for item in range(0, 3):
         else:
             snack_ok = "no"
 
-        #if snack is not OK - ask question again.
-        if snack_ok == "yes":
-            print("snackk choice: ", snack)
-        else:
-            print("invalid choice")        
+    #if snack is not OK - ask question again.
+    if snack_ok == "yes":
+        print("snack choice: ", snack)
+    else:
+        print("invalid choice")
