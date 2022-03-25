@@ -6,15 +6,15 @@ def string_check(choice, options):
     for var_list in options:
 
         #if the snack is one of the lists, retrun the full
-        if choice is var_list:
+        if choice in var_list:
 
             #get full name of snack and put it
-            #in title case so it liiks nice when outputted
+            #in title case so it looks nice when outputted
             chosen = var_list[0].title()
             is_valid = "yes"
             break
 
-        #if the chosen optoni is not valid, set is_valid to no
+        #if the chosen option is not valid, set is_valid to no
         else:
             is_valid = "no"
 
@@ -35,6 +35,18 @@ valid_snacks = [
     ["pita chips", "chips", "pc", "pita", "c"],
     ["water", "w", "d"]
 ]
+
+yes_no = [
+    ["yes", "y"],
+    ["no", "n"]
+]
+
+check_snack = "invalid choice"
+while check_snack == "invalid choice":
+    want_snack = input("do you want to order snacks? ").lower()
+    check_snack = string_check(want_snack, yes_no)
+    print(check_snack)
+
 
 # loop ten times to make testing quicker
 for item in range(0, 10):
