@@ -1,5 +1,4 @@
 import re
-from tabnanny import check
 
 
 # functions go here
@@ -92,7 +91,6 @@ def get_snack():
 
 # **** Main Routine goes here ****
 
-# valid options for yes / no questions
 # valid options for yes / no questions
 yes_no = [
     ["yes", "y"],
