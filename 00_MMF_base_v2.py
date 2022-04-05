@@ -1,7 +1,32 @@
-#   imports statement
+import re
 
 
 #  functions go here
+
+
+def string_check(choice, options):
+
+    for var_list in options:
+
+        #if the snack is one of the lists, retrun the full
+        if choice in var_list:
+
+            #get full name of snack and put it
+            #in title case so it looks nice when outputted
+            chosen = var_list[0].title()
+            is_valid = "yes"
+            break
+
+        #if the chosen option is not valid, set is_valid to no
+        else:
+            is_valid = "no"
+
+     # if the snack is not OK - ask again
+    if is_valid == "yes":
+        return chosen
+    else:
+        return "invalid choice"  
+
 
 def not_blank (question, error_messasge) :
     valid = False
@@ -33,7 +58,6 @@ def int_check(question):
         except ValueError:
             print(error)
 
-
 #**********Main Routine**********
 
 # set up dictionaries / lists needed to hold data
@@ -60,7 +84,9 @@ while name != "xxx" and count < MAX_TICKETS:
 
   print()
 
-  # Get age (between 12 and 130
+  
+
+  # Get age (between 12 and 130)
   age = int_check("How old? ")
   #check the age is valid...
   if age < 12:
@@ -71,6 +97,7 @@ while name != "xxx" and count < MAX_TICKETS:
     print("that is very old _ it looks like a mstake")
     continue
 
+  # ask user for desired snack and put it in lower case
 
   # calculate ticket price based on age
   if age < 16:
@@ -92,6 +119,7 @@ while name != "xxx" and count < MAX_TICKETS:
   print("Profit from Tickets: ${:.2f}".format(profit))
 
   # loop to ask for snacks
+  
 
   # calculate snack price
 
