@@ -104,6 +104,9 @@ def get_snack():
 
          # check if snack is valid
         snack_choice = string_check(desired_snack, valid_snacks)   
+        
+        if snack_choice == "invalid choice":
+            print("sorry that is not a valid snack choice")
     
 
         # check snack amount is valid (less than 5)
@@ -125,6 +128,12 @@ def get_snack():
 
 # set up dictionaries / lists needed to hold data
 
+yes_no = [
+    ["yes", "y"],
+    ["no", "n"]
+]
+
+
 # initialise variables
 count = 0
 profit = 0
@@ -135,54 +144,79 @@ MAX_TICKETS = 5
 # Loop to get ticket details
 name = ""
 while name != "xxx" and count < MAX_TICKETS:
-  print ("You have {} seats left". format (MAX_TICKETS - count)) 
+    print ("You have {} seats left". format (MAX_TICKETS - count)) 
 
 
-  # Get details...
-  # Get name (can't be blank)
-  name = not_blank ("Name: ", "Sorry, this can't be blank")
+    # Get details...
+    # Get name (can't be blank)
+    name = not_blank ("Name: ", "Sorry, this can't be blank")
 
-  if name == "xxx":
-    break
+    if name == "xxx":
+        break
 
-  print()
-
-  
-
-  # Get age (between 12 and 130)
-  age = int_check("How old? ")
-  #check the age is valid...
-  if age < 12:
-    print("sorry you are too young for this movie")
-    continue
-
-  elif age > 130:
-    print("that is very old _ it looks like a mistake")
-    continue
-
-  # ask user for desired snack and put it in lower case
-  desired_snack = input("snack: ") .lower()
- 
-  # calculate ticket price based on age
-  if age < 16:
-    ticket_price = 7.5
-  elif age < 65:
-    ticket_price = 10.5
-  else:
-    ticket_price = 6.5    
+    print()
 
 
-  # if age is OK, increase ticket count
-  count += 1
 
-  profit_made = ticket_price - 5
-  profit += profit_made
+    # Get age (between 12 and 130)
+    age = int_check("How old? ")
+    #check the age is valid...
+    if age < 12:
+        print("sorry you are too young for this movie")
+        continue
 
-  print("{}  : ${:.2f}".format(name, ticket_price))  
+    elif age > 130:
+        print("that is very old _ it looks like a mistake")
+        continue
 
-  print("Profit from Tickets: ${:.2f}".format(profit))
 
-  # loop to ask for snacks
+    # calculate ticket price based on age
+    if age < 16:
+        ticket_price = 7.5
+    elif age < 65:
+        ticket_price = 10.5
+    else:
+        ticket_price = 6.5    
+
+
+    # if age is OK, increase ticket count
+    count += 1
+
+    profit_made = ticket_price - 5
+    profit += profit_made
+
+    print("{}  : ${:.2f}".format(name, ticket_price))  
+
+    print("Profit from Tickets: ${:.2f}".format(profit))
+
+    # loop to ask for snacks
+    # ask user if they want snack
+    check_snack = "invalid choice"
+    while check_snack == "invalid choice":
+        want_snacks = input("do you want to order snacks? "). lower()
+        check_snack = string_check(want_snacks, yes_no)
+        if check_snack == "invalid choice":
+            print("Please enter yes / no")
+
+    # if they say yes, ask what snacks they want (and add to our snack list)
+    if check_snack == "Yes":
+        get_order = get_snack()
+
+    else:
+        get_order = []    
+
+    # show snack orders
+    print()
+    if len(get_order) == 0:
+        print("snack ordered: None")
+
+    else:
+        print("snack ordered:")
+
+        ''' for item in snack_order:
+            print(item) 
+            '''    
+        print(get_order)
 
   # calculate snack price
 
