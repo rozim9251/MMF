@@ -1,6 +1,10 @@
+import pandas
+
 # initialise snack lists...
 
-names = ['Rangi', 'Manaia', 'Talia', 'Arihi', 'fetu']
+
+
+all_names = ['Rangi', 'Manaia', 'Talia', 'Arihi', 'fetu']
 
 popcorn = []
 mms = []
@@ -10,7 +14,9 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice,]
 
-snack_menu_dict = {
+# Data frame Dioctionary
+movie_data_dict = {
+    'Name': all_names,
     'Popcorn': popcorn,
     'Water' : water,
     'Pita Chips': pita_chips,
@@ -25,6 +31,7 @@ test_data = [
     [[1, 'Popcorn'], [1, 'Orange Juice']],
     [[1, 'M&Ms'], [1, 'Pita Chips'], [3, 'Orange Juice']]
 ]
+
 count = 0
 for client_order in test_data:
 
@@ -32,7 +39,7 @@ for client_order in test_data:
     for item in snack_lists:
         item.append(0)
 
-    # print (snack_lists)    
+           # print (snack_lists)    
 
     # get order (hard cooked for easy testing)...
     snack_order = test_data[count]
@@ -43,12 +50,19 @@ for client_order in test_data:
         if len(item) > 0:
             to_find = (item[1]) 
             amount = (item[0])
-            add_list = snack_menu_dict[to_find] 
+            add_list = movie_data_dict[to_find] 
             add_list [-1] = amount
 
-print() 
+print()
+print("Names:", all_names) 
 print("Popcorn: ", snack_lists[0])
-print("M&Ms: ", snack_lists[1])
+print("M&M's: ", snack_lists[1])
 print("Pitac Chips: ", snack_lists[2])
 print("Water: ", snack_lists[3]) 
-print("Orange Juice: ", snack_lists[4])          
+print("Orange Juice: ", snack_lists[4])  
+print()
+
+# print details...
+movie_frame = pandas.DataFrame(movie_data_dict)
+movie_frame = movie_frame.set_index('Name')
+print(movie_frame)
