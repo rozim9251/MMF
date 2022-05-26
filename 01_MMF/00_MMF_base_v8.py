@@ -28,7 +28,6 @@ def string_check(choice, options):
     else:
         return "invalid choice"  
 
-
 def not_blank (question, error_messasge) :
     valid = False
 
@@ -39,10 +38,6 @@ def not_blank (question, error_messasge) :
              return response
         else:
               print(error_messasge)
-
-def check_tickets():
-    if ticket_count < MAX_TICKETS - 1:
-        print("You have {} seats left".format(MAX_TICKETS - ticket_count))
 
 # checks for interger more than 0
 def int_check(question):
@@ -62,6 +57,16 @@ def int_check(question):
 
         except ValueError:
             print(error)
+
+def check_tickets(tickets_sold, ticket_limit):
+    # tells user howm many seats are left
+    if tickets_sold < ticket_limit - 1:
+        print("You have {} seats left".format(ticket_limit - tickets_sold))
+
+    # Warns user that only one seat is left
+    else:
+        print("*** There is ONE seat left!! ***")
+    return""
 
 def get_snack():
     # regular expression to find if item starts with a number
@@ -127,9 +132,25 @@ def get_snack():
         if snack_choice != "xxx" and snack_choice != "invalid choice":
             snack_order.append(snack_row)
 
+
 # Currency formating functions
 def currency (x):
     return "${:.2f}".format(x)
+
+# Functions to show instructions if necessary
+def instructions(options):
+    show_help = "invalid choice"
+    while show_help == "invalid choice":
+        show_help = input("Would you like to read the instructions?")
+        show_help = string_check(show_help, options)
+
+        if show_help == "yes":
+            print()
+            print("****Mega Movie Fundraiser Intructions****")
+            print()
+            print("intructions go here. They are breif but helpful")
+
+        return ""
 
 #**********Main Routine**********
 
@@ -347,7 +368,12 @@ snack_total = movie_frame['Snacks'].sum()
 snack_profit = snack_total * 0.2
 
 # Calculate ticket profites & total profits
+ticket_sales = sum(all_tickets)
 ticket_profit = ticket_sales - (5 * ticket_count)
+
+print("Ticket Sales: ", ticket_sales)
+print("ticket profit post formula", ticket_profit)
+
 total_profit = snack_profit + ticket_profit
 
 # Format dollar amounts and add to list...
@@ -419,3 +445,4 @@ print(movie_frame)
 
 # Ending stuff.  Might not need it after all??
 print("you have {} tickets left".format(MAX_TICKETS - ticket_count))
+
