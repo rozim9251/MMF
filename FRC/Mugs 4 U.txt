@@ -1,0 +1,27 @@
+***** Mugs 4 U ******
+
+
+----  Variable Costs -----
+
+          Price  Quantity     Cost
+Item                              
+mugs      $1.00       100  $100.00
+printing  $0.10       100   $10.00
+
+
+---- Fixed Costs ----
+
+       Price  Quantity    Cost
+Item                          
+rent  $25.00         1  $25.00
+adds  $10.00         1  $10.00
+
+
+---- Sales Advice / Calculations  ----
+
+Profit  Target: $200.00
+
+Sales Needed: $345.00
+
+Recommended Price: $4.00
+

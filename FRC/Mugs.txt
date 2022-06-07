@@ -1,0 +1,23 @@
+***** Mugs ******
+
+
+----  Variable Costs -----
+
+      Price  Quantity     Cost
+Item                          
+mugs  $1.00       100  $100.00
+
+
+---- Fixed Costs ----
+
+There are no fixed costs
+
+
+---- Sales Advice / Calculations  ----
+
+Profit  Target: $200.00
+
+Sales Needed: $300.00
+
+Recommended Price: $4.00
+

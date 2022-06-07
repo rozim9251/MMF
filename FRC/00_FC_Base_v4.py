@@ -115,17 +115,98 @@ def get_expenses(var_fixed):
     return [expense_frame, Sub_total]
 
 
+def expense_print(heading, frame, subtotal):
+    print()
+    print("**** {} Costs ****".format(heading))
+    print(frame)
+    print()
+    print("{} Costs: ${:.2f}".format(heading,subtotal))
+    return ""
+
+
+def profit_goal(total_costs):
+
+    # Initialise variables and error message
+    error = "Please enter a valid profit goal\n"
+
+    valid = False
+    while not valid:
+
+        # ask for profit goal...
+        response = input("What is your profit goal (eg $500 or 50%) ")
+
+        # check if first character is $...
+        if response[0] == "$":
+            profit_type = "$"
+            # Get amount(everything after $)
+            amount = response[1:]
+
+
+        # check if last character is %
+        elif response [-1] == "%":
+            profit_type = "%"
+            # Get amount (everything before the %)
+            amount = response[:-1]
+
+        else:
+            # Set response to amount for now
+            profit_type = "unknown"
+            amount = response
+
+        try:
+            # check amount is a number more than zero...
+            amount = float(amount)
+            if amount <= 0:
+                print(error)
+                continue
+        
+        except ValueError:
+            print(error)
+            continue
+
+
+        if profit_type == "unknown" and amount  >= 100:
+            dollar_type = yes_no("Do you mean ${:.2f}. ie {:.2f} dollars? , y / n".format(amount, amount))
+
+
+            # Set profit type based on user answer above
+            if dollar_type == "yes":
+                profit_type = "$"
+            else:
+                profit_type = "%"
+
+        
+        elif profit_type == "unknown" and amount < 100:
+            percent_type = yes_no("Do you mean {}%? , y / n".format(amount))
+            if percent_type == "yes":
+                profit_type = "%"
+            else:
+                profit_type = "$"
+
+        # return profit goal to main routine
+        if profit_type == "$":
+            return amount
+        else:
+            goal = (amount / 100) * total_costs
+            return goal
+
+
+
 # *** Main Routine goes here ***
 # Get product name
 product_name = not_blank("product name: ", "The product name can't be blank.")
 
 
+# Get variable costs
 variable_expenses = get_expenses("variable")
 variable_frame = variable_expenses[0]
 variable_sub = variable_expenses[1]
 
 print()
-have_fixed = yes_no("Do you have fixed costs? ")
+have_fixed = yes_no("Do you have fixed costs (y / n)? ")
+
+print()
+print("Please enter your variable costs below...")
 
 if have_fixed == "yes":
 
@@ -134,27 +215,40 @@ if have_fixed == "yes":
     fixed_sub = fixed_expenses[1]
 
 else:
-    fixed_expenses = 0
-    fixed_frame = ""
     fixed_sub = 0
+
+
+# work out total costs and profits target
+all_costs = variable_sub + fixed_sub
+profit_target = profit_goal(all_costs)
+
+# calculate recommended price
+selling_price = 0
 
 # Find total costs
 
 # Ask user for profit goal 
 
-# calculate recommended price
-
 # write data to file
 
 # **** Printing Area ****
 
-print("**** Variable Costs ****")
-print(variable_frame)
+print()
+print("***** Fund Raising - {} *****".format(product_name))
+print()
+expense_print("Variable", variable_frame, variable_sub)
+
+if have_fixed == "yes":
+    expense_print("Fixed", fixed_frame[['Cost']], fixed_sub)
+
+print()
+print("***** Total Costs: ${:.2f} *****".format(all_costs))
 print()
 
-print("Variable Costs: ${:.2f}".format(variable_sub))
-
-print("**** Fixed Costs ****")
-print(fixed_frame[['Cost']])
 print()
-print("Fixed Costs: ${:.2f}".format(fixed_sub))
+print("**** Profit & Sales Target *****")
+print("Profit Target: ${:.2f}".format(profit_target))
+print("Total Sales: ${:.2f}".format(all_costs + profit_target))
+
+print()
+print("***** Recommended Selling Price: ${:.2f}".format(selling_price))
