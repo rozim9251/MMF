@@ -39,7 +39,7 @@ def yes_no(question):
             elif response == var_item[0]:
                 return var_item
 
-        print("Please enter either yes or nno...\n")
+        print("Please enter either yes or no...\n")
 
 
 # Checks that string response is not blank

@@ -109,10 +109,10 @@ def get_snack():
             amount = 1
             desired_snack = desired_snack
 
-          # remove white space around snack
+        # remove white space around snack
         desired_snack = desired_snack.strip()
 
-         # check if snack is valid
+        # check if snack is valid
         snack_choice = string_check(desired_snack, valid_snacks)   
         
         if snack_choice == "invalid choice":

@@ -15,6 +15,6 @@ while name != "xxx" and count < MAX_TICKETS:
     print()
 
 if count == MAX_TICKETS:
-    print("You have sold all the availabvel tickets!")
+    print("You have sold all the availabel tickets!")
 else:
     print("You have sold {} tickets. /n There are {} places still avilabel .format(count, MAX_TICKETS - count)")         
