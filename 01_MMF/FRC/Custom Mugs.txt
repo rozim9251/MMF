@@ -1,0 +1,26 @@
+***** custom mugs ******
+
+
+----  Variable Costs -----
+
+            Price  Quantity    Cost
+Item                               
+plain mugs  $0.90       100  $90.00
+red mugs    $1.30        50  $65.00
+
+
+---- Fixed Costs ----
+
+       Price  Quantity    Cost
+Item                          
+rent  $60.00         1  $60.00
+
+
+---- Sales Advice / Calculations  ----
+
+Profit  Target: $107.50
+
+Sales Needed: $322.50
+
+Recommended Price: $50.00
+
