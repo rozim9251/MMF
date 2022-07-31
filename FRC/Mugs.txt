@@ -1,11 +1,12 @@
-***** Mugs ******
+***** mugs ******
 
 
 ----  Variable Costs -----
 
-      Price  Quantity     Cost
-Item                          
-mugs  $1.00       100  $100.00
+          Quantity  Price     Cost
+Item                              
+mugs           100  $1.00  $100.00
+printing       100  $0.20   $20.00
 
 
 ---- Fixed Costs ----
@@ -17,7 +18,7 @@ There are no fixed costs
 
 Profit  Target: $200.00
 
-Sales Needed: $300.00
+Sales Needed: $320.00
 
 Recommended Price: $4.00
 

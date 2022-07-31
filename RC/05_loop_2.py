@@ -1,7 +1,5 @@
 # imports...
-import math
-
-
+import pandas
 # Functions go here
 
 # checks that string is not blank
@@ -47,24 +45,30 @@ def choice_checker(question, valid_list, error):
         # iterates through list and if response is an item
         # in the list ( or the first letter of an item), the
         # full item name is returned
-        for item in valid_list:
-            if response == item[0] or response == item:
-                print()
-                return item
 
-        # output error if item is not in list
-        print(error)
-        print()
+        try:
+            for item in valid_list:
+                if response == item[0] or response == item:
+                    print()
+                    return item
+
+            # output error if item is not in list
+            print(error)
+            print()
+
+        except IndexError:
+            return response
 
 # ***** Main Routine starts here *****
 # unit list
-unit_list = ["kilograms","kg", "grams", "g", "liters", "l", "millilitres", "ml"]
+unit_list = ["kilograms","kg", "grams", "g", "liters", "l", "millilitres", "ml", ""]
 
 total = 0
 ingredient_name = ""
 ingredient_order = []
 
-# loop to ask user about their ingredient
+# start of loop
+# initiate loop so that it runs at least once
 while ingredient_name != "xxx":
     
     # Get name (can't be blank)
@@ -87,45 +91,16 @@ while ingredient_name != "xxx":
 
     # calculates price over package_amount then times it by quantity
     cost_to_make = (price / package_amount) * quantity  
-
-    # start of loop
-    # initiate loop so that it runs at least once
+    
+    # puts ingredient costs in to a total
     total += cost_to_make
 
     print("{:.2f}".format(cost_to_make))
 
 print("Total: {:.2f}".format(total)) 
 
-# asks user how many people they are serving
+# asks user how many people they will be serving
 per_serve = num_check("How many people will you be serving? ", "Sorry, the amount must be a number more than 0")
 
 price_per_serve = total/per_serve
-print(price_per_serve)
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Printing area
+print("{:.2f}".format(price_per_serve))

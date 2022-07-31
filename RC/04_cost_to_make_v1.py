@@ -56,11 +56,12 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
+
 # Asks user all question needed for the receipt calculation
-def cost_for_ingredient():
-    
+def cost_for_ingredient(total):
+
     # Get name (can't be blank)
-    name = not_blank ("Enter Ingredient Name: ", "Sorry, this can't be blank")
+    ingredient_name = not_blank ("Enter Ingredient Name: ", "Sorry, this can't be blank")
 
     # asks for the quantity, if quantity = 0 puts error message than asks question again
     quantity = num_check("How much do you need? ", "Sorry, the amount must be a number or a number more than 0")
@@ -68,17 +69,21 @@ def cost_for_ingredient():
     # asks user for package amount
     package_amount = num_check("Enter Package amount: ", "Sorry, the amount must be a number or a number more than 0")
     
-    # asks for the unit, if not in list asks again
-    unit = choice_checker ("Enter a unit: ", unit_list, "Invalid response, try again")
-
     # asks user for the cost of ingredient
-    price = num_check ("Enter the price: $", "The amount must be a number more than 0")
-        
-    cost_to_make = ""
+    price = num_check ("Enter the price: ", "The amount must be a number more than 0")
 
-    return cost_to_make
-        
+    # asks for the unit, if not in list asks again
+    unit = choice_checker ("Enter the unit: ", unit_list, "Invalid response, try again")
 
+    # calculates price over package_amount then times it by quantity
+    cost_to_make = (price / package_amount) * quantity  
+    total = 0
+    total += cost_to_make
+    
+    print(cost_to_make)
+    print ("Total " , total)
+
+        
 # ***** Main routine *****
 
 # unit list
