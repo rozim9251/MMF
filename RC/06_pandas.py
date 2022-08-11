@@ -88,8 +88,6 @@ ingredient_data_dict = {
     'Package amount': Package_amount,
     'Price': Price,
     'Cost to make':Cost_to_make,
-    'Price per serve':Price_per_serve,
-    'Servings': Serving
 }
 
 
@@ -108,6 +106,7 @@ while ingredient_list != "xxx":
     # asks for the quantity, if quantity = 0 puts error message than asks question again
     quantity = num_check("How much do you need? ", "Sorry, the amount must be a number or a number more than 0")
     Quantity.append(quantity)
+
 
     # asks user for package amount
     package_amount = num_check("Enter Package amount: ", "Sorry, the amount must be a number or a number more than 0")
@@ -130,10 +129,20 @@ while ingredient_list != "xxx":
 
     print("{:.2f}".format(cost_to_make))
 
-print("Total: {:.2f}".format(total))
 
-for item in ingredient_list:
-    item.append(0)
+
+# for item in ingredient_list:
+#     item.append(0)
+
+
+print('Ingredient', Ingredient)
+print('Amount needed', Quantity)
+print('Unit', Units)
+print('Package amount', Package_amount)
+print('Price', Price)
+print('Cost to make', Cost_to_make)
+
+
 
 # Create a dataframe and set index to name column
 ingredient_frame = pandas.DataFrame(ingredient_data_dict)
@@ -141,10 +150,14 @@ ingredient_frame = ingredient_frame.set_index('Ingredient')
 
 # asks user how many people they will be serving
 per_serve = num_check("How many people will you be serving? ", "Sorry, the amount must be a number more than 0")
-Serving.append(per_serve)
 
+
+# Devides the total by how many people they will be serving
 price_per_serve = total / per_serve
 Price_per_serve.append(price_per_serve)
-print("{:.2f}".format(price_per_serve))
 
-print(Ingredient, Quantity, Units, Package_amount, Price, Cost_to_make, Price_per_serve, Serving)
+# prints price_per_serve into two decimal places
+print("Total: {:.2f}".format(total))
+print("Price per serve: {:.2f}".format(price_per_serve))
+
+
