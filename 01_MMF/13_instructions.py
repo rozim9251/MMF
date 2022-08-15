@@ -30,8 +30,8 @@ def instructions(options):
 
         if show_help == "yes":
             print()
-            print("****Meag Movie Fundraiser Intructions****")
+            print("****Mega Movie Fundraiser Instructions****")
             print()
-            print("intructions go here. They are breif but helpful")
+            print("instructions go here. They are brief but helpful")
 
         return ""

@@ -61,10 +61,13 @@ def choice_checker(question, valid_list, error):
             return response
 
 
+
+
+
 # ***** Main Routine starts here *****
 
 total = 0
-ingredient_list = ""
+ingredient_name = ""
 ingredient_order = []
 
 # Initialise lists (to make a data-frame in due course)
@@ -88,12 +91,13 @@ ingredient_data_dict = {
     'Package amount': Package_amount,
     'Price': Price,
     'Cost to make':Cost_to_make,
+
 }
 
 
 # start of loop
 # initiate loop so that it runs at least once
-while ingredient_list != "xxx":
+while ingredient_name != "xxx":
 
     # Get name (can't be blank)
     ingredient_name = not_blank("Enter Ingredient Name: ", "Sorry, this can't be blank")
@@ -106,7 +110,6 @@ while ingredient_list != "xxx":
     # asks for the quantity, if quantity = 0 puts error message than asks question again
     quantity = num_check("How much do you need? ", "Sorry, the amount must be a number or a number more than 0")
     Quantity.append(quantity)
-
 
     # asks user for package amount
     package_amount = num_check("Enter Package amount: ", "Sorry, the amount must be a number or a number more than 0")
@@ -129,12 +132,7 @@ while ingredient_list != "xxx":
 
     print("{:.2f}".format(cost_to_make))
 
-
-
-# for item in ingredient_list:
-#     item.append(0)
-
-
+# prints everything into the panda
 print('Ingredient', Ingredient)
 print('Amount needed', Quantity)
 print('Unit', Units)
@@ -142,22 +140,16 @@ print('Package amount', Package_amount)
 print('Price', Price)
 print('Cost to make', Cost_to_make)
 
-
-
 # Create a dataframe and set index to name column
 ingredient_frame = pandas.DataFrame(ingredient_data_dict)
 ingredient_frame = ingredient_frame.set_index('Ingredient')
 
 # asks user how many people they will be serving
 per_serve = num_check("How many people will you be serving? ", "Sorry, the amount must be a number more than 0")
+Serving.append(per_serve)
 
-
-# Devides the total by how many people they will be serving
 price_per_serve = total / per_serve
 Price_per_serve.append(price_per_serve)
-
-# prints price_per_serve into two decimal places
+print(ingredient_frame)
 print("Total: {:.2f}".format(total))
-print("Price per serve: {:.2f}".format(price_per_serve))
-
-
+print("{:.2f}".format(price_per_serve))
