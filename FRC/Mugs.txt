@@ -6,7 +6,7 @@
           Quantity  Price     Cost
 Item                              
 mugs           100  $1.00  $100.00
-printing       100  $0.20   $20.00
+printing       100  $0.25   $25.00
 
 
 ---- Fixed Costs ----
@@ -18,7 +18,7 @@ There are no fixed costs
 
 Profit  Target: $200.00
 
-Sales Needed: $320.00
+Sales Needed: $325.00
 
 Recommended Price: $4.00
 

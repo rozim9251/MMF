@@ -34,7 +34,7 @@ def num_check(question, error):
 
 
 # checks if items are in list
-def choice_checker(question, valid_list, error):
+def choice_checker(question, valid_list, error, special = None):
 
     valid = False
     while not valid:
@@ -42,11 +42,15 @@ def choice_checker(question, valid_list, error):
         # Ask user for choice (and put choice in lowercase)
         response = input(question).lower()
 
+        if response == special:
+            return response
+
+        else:
+
         # iterates through list and if response is an item
         # in the list ( or the first letter of an item), the
         # full item name is returned
 
-        try:
             for item in valid_list:
                 if response == item[0] or response == item:
                     print()
@@ -56,12 +60,10 @@ def choice_checker(question, valid_list, error):
             print(error)
             print()
 
-        except IndexError:
-            return response
 
 # ***** Main Routine starts here *****
 # unit list
-unit_list = ["kilograms","kg", "grams", "g", "liters", "l", "millilitres", "ml", ""]
+unit_list = ["kilograms","kg", "grams", "g", "liters", "l", "millilitres", "ml"]
 
 total = 0
 ingredient_name = ""
@@ -87,7 +89,7 @@ while ingredient_name != "xxx":
     price = num_check ("Enter the price: $", "Sorry, the amount must be a number more than 0")
 
     # asks for the unit, if not in list asks again
-    unit = choice_checker ("Enter the unit: ", unit_list, "Invalid response, try again")
+    unit = choice_checker ("Enter the unit: ", unit_list, "Invalid response, try again", "")
 
     # calculates price over package_amount then times it by quantity
     cost_to_make = (price / package_amount) * quantity  
